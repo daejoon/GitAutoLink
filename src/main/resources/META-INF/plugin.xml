@@ -1,21 +1,22 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
-    <!-- Unique identifier of the plugin. It should be FQN. It cannot be changed between the plugin versions. -->
-    <id>com.ddoong2.GitAutoLink</id>
-
-    <!-- Public plugin name should be written in Title Case.
-         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
-    <name>GitAutoLink</name>
-
-    <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
-    <vendor email="kkode1911@gmail.com" url="https://blog.ddoong2.com">Daejoon Ko</vendor>
+    <id>com.ddoong2.GitAutoLink</id><!-- Unique identifier of the plugin. It should be FQN. It cannot be changed between the plugin versions. -->
+    <version>0.0.1-SNAPSHOT</version>
+    <name>GitAutoLink</name><!-- Public plugin name should be written in Title Case. Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
+    <vendor email="kkode1911@gmail.com" url="https://blog.ddoong2.com">Daejoon Ko</vendor><!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
 
     <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
          Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
          Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
+    <!-- overview -->
     <description><![CDATA[
-    Git Auto Link
-  ]]></description>
+        <p>Automatically link to specific words in Git log messages.</p>
+    ]]></description>
+
+    <!-- what's new -->
+    <change-notes><![CDATA[
+        <p>Initial Version 0.0.1-SNAPSHOT</p>
+    ]]></change-notes>
 
     <!-- Product and plugin compatibility requirements.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
@@ -24,6 +25,6 @@
     <!-- Extension points defined by the plugin.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
     <extensions defaultExtensionNs="com.intellij">
-
+        <!-- Add your extensions here -->
     </extensions>
 </idea-plugin>
