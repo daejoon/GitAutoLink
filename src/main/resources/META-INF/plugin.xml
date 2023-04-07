@@ -26,8 +26,16 @@
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
     <extensions defaultExtensionNs="com.intellij">
         <!-- Add your extensions here -->
-        <logHighlighterFactory
-                implementation="com.ddoong2.gitautolink.vcs.log.ui.highlighters.GitLogHighlighterFactory"
-        />
     </extensions>
+
+    <actions>
+        <action
+                id="com.ddoong2.gitautolink.ui.action.BrowserAction"
+                class="com.ddoong2.gitautolink.ui.action.BrowserAction"
+                text="Open in Browser"
+        >
+            <add-to-group group-id="Git.LogContextMenu"/>
+            <add-to-group group-id="Vcs.Log.ContextMenu"/>
+        </action>
+    </actions>
 </idea-plugin>
