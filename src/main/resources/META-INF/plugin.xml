@@ -2,7 +2,7 @@
 <idea-plugin>
 
     <!-- Unique id for this plugin. Must stay constant for the life of the plugin. -->
-    <id>com.ddoong2.GitAutoLink</id>
+    <id>com.ddoong2.gitautolink</id>
 
     <!-- Public plugin name should be written in Title Case. Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
     <name>GitAutoLink</name>
@@ -26,16 +26,16 @@
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
     <extensions defaultExtensionNs="com.intellij">
         <!-- Add your extensions here -->
+        <applicationConfigurable groupId="tools" instance="com.ddoong2.gitautolink.settings.SettingConfigurable"/>
     </extensions>
 
     <actions>
         <action
                 id="com.ddoong2.gitautolink.ui.actions.BrowserAction"
                 class="com.ddoong2.gitautolink.ui.actions.BrowserAction"
-                text="Open in Browser"
                 icon="com.ddoong2.gitautolink.ui.MyIcons.LINK"
+                text="Open in Browser"
         >
-            <add-to-group group-id="Git.LogContextMenu"/>
             <add-to-group group-id="Vcs.Log.ContextMenu"/>
         </action>
     </actions>

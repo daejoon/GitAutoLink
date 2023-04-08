@@ -4,7 +4,7 @@ fun properties(key: String) = project.findProperty(key).toString()
 
 plugins {
     id("java")
-    id("org.jetbrains.kotlin.jvm") version "1.7.20"
+    id("org.jetbrains.kotlin.jvm") version "1.8.20"
     id("org.jetbrains.intellij") version "1.13.3"
 }
 
@@ -16,7 +16,13 @@ repositories {
 }
 
 dependencies {
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.9.0")
+    testImplementation("org.assertj:assertj-core:3.24.2")
     testImplementation("io.github.autoparams:autoparams:1.1.1")
+}
+
+tasks.withType<Test> {
+    useJUnitPlatform()
 }
 
 // Configure Gradle IntelliJ Plugin
@@ -26,7 +32,7 @@ intellij {
     version.set(properties("platformVersion"))
     type.set(properties("platformType")) // Target IDE Platform
     downloadSources.set(properties("platformDownloadSources").toBoolean())
-    updateSinceUntilBuild.set(true)
+    updateSinceUntilBuild.set(false)
 
     plugins.set(properties("platformPlugins").split(',').map(String::trim).filter(String::isNotEmpty))
 }
