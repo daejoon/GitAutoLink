@@ -1,6 +1,6 @@
 package com.ddoong2.gitautolink.settings
 
-import com.ddoong2.gitautolink.data.idGenerator
+import com.ddoong2.gitautolink.util.idGenerator
 import com.intellij.ide.util.PropertiesComponent
 
 object Setting {

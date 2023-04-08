@@ -1,4 +1,4 @@
-package com.ddoong2.gitautolink.data
+package com.ddoong2.gitautolink.util
 
 inline fun <reified T> idGenerator(key: String?): String {
     return if (key?.isEmpty() == true) {
