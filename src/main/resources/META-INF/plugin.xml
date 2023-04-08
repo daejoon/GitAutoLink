@@ -30,9 +30,10 @@
 
     <actions>
         <action
-                id="com.ddoong2.gitautolink.ui.action.BrowserAction"
-                class="com.ddoong2.gitautolink.ui.action.BrowserAction"
+                id="com.ddoong2.gitautolink.ui.actions.BrowserAction"
+                class="com.ddoong2.gitautolink.ui.actions.BrowserAction"
                 text="Open in Browser"
+                icon="com.ddoong2.gitautolink.ui.MyIcons.LINK"
         >
             <add-to-group group-id="Git.LogContextMenu"/>
             <add-to-group group-id="Vcs.Log.ContextMenu"/>
