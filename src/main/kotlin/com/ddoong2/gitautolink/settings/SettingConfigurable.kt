@@ -16,15 +16,19 @@ class SettingConfigurable : SearchableConfigurable {
     }
 
     override fun isModified(): Boolean {
-        val oldUrlTemplate = Setting.urlTemplate
-        val newUrlTemplate = settingForm.urlTemplate.text
-        return oldUrlTemplate.equals(newUrlTemplate, ignoreCase = true).not()
+        return (Setting.urlTemplate == settingForm.urlTemplate.text).not()
+                || (Setting.leftDelimeter == settingForm.leftDelimeter.text).not()
+                || (Setting.rightDelimeter == settingForm.rightDelimeter.text).not()
     }
 
     override fun apply() {
         if (isModified) {
             validate()
-            Setting.urlTemplate = settingForm.urlTemplate.text
+            Setting.apply {
+                urlTemplate = settingForm.urlTemplate.text
+                leftDelimeter = settingForm.leftDelimeter.text
+                rightDelimeter = settingForm.rightDelimeter.text
+            }
         }
     }
 

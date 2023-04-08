@@ -10,7 +10,11 @@ import com.intellij.vcs.log.VcsLogDataKeys
 class BrowserAction : DumbAwareAction() {
     override fun actionPerformed(e: AnActionEvent) {
         val vcsLog = e.getData(VcsLogDataKeys.VCS_LOG) ?: return
-        val keyData = KeyData(message = vcsLog.selectedDetails[0].fullMessage)
+        val keyData = KeyData(
+            message = vcsLog.selectedDetails[0].fullMessage,
+            left = Setting.leftDelimeter,
+            right = Setting.rightDelimeter,
+        )
         if (keyData.isFind) {
             openBrowse(Setting.urlTemplate, keyData)
         }
