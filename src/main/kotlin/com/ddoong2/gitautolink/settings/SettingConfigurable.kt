@@ -1,53 +1,79 @@
 package com.ddoong2.gitautolink.settings
 
-import com.ddoong2.gitautolink.util.idGenerator
-import com.intellij.openapi.options.SearchableConfigurable
-import javax.swing.JComponent
+import com.intellij.openapi.options.BoundConfigurable
+import com.intellij.openapi.ui.DialogPanel
+import com.intellij.ui.dsl.builder.*
 
 
+class SettingConfigurable : BoundConfigurable("GitAutoLink") {
 
-class SettingConfigurable : SearchableConfigurable {
-
-    private val id = idGenerator<SettingConfigurable>()
+    private lateinit var panel : DialogPanel
     private val displayName = "GitAutoLink"
-    private val settingForm = SettingForm()
-    override fun createComponent(): JComponent? {
-        return settingForm.panel
+    private var model = Model()
+
+    override fun createPanel(): DialogPanel {
+        panel = panel {
+            row("URL Template:") {
+                textField()
+                    .columns(COLUMNS_LARGE + 10)
+                    .comment(
+                        "Perform a search on a website and copy the resulting URL.\n" +
+                                "Replace your search term with {key} in curly brackets\n" +
+                                "e.g. https://en.dict.naver.com/#/search?query={key}"
+                    )
+                    .bindText(model::urlTemplate)
+
+            }
+            row("Left Delimeter:") {
+                textField()
+                    .columns(COLUMNS_TINY)
+                    .bindText(model::leftDelimeter)
+            }
+            row("Right Delimeter:") {
+                textField()
+                    .columns(COLUMNS_TINY)
+                    .bindText(model::rightDelimeter)
+            }
+        }
+
+        return panel;
     }
 
     override fun isModified(): Boolean {
-        return (Setting.urlTemplate == settingForm.urlTemplate.text).not()
-                || (Setting.leftDelimeter == settingForm.leftDelimeter.text).not()
-                || (Setting.rightDelimeter == settingForm.rightDelimeter.text).not()
+        return panel.isModified();
     }
 
     override fun apply() {
         if (isModified) {
             validate()
+            panel.apply()
             Setting.apply {
-                urlTemplate = settingForm.urlTemplate.text
-                leftDelimeter = settingForm.leftDelimeter.text
-                rightDelimeter = settingForm.rightDelimeter.text
+                urlTemplate = model.urlTemplate
+                leftDelimeter = model.leftDelimeter
+                rightDelimeter = model.rightDelimeter
             }
         }
     }
 
     override fun reset() {
-        settingForm.resetFrom(Setting)
+        model.apply {
+            urlTemplate = Setting.urlTemplate
+            leftDelimeter = Setting.leftDelimeter
+            rightDelimeter = Setting.rightDelimeter
+        }
+        panel.reset()
     }
 
     override fun getDisplayName(): String {
         return displayName
     }
 
-    override fun getId(): String {
-        return id
-    }
-
-    override fun enableSearch(option: String?): Runnable? {
-        return null
-    }
-
     private fun validate() {
     }
+
+    internal data class Model(
+        var urlTemplate: String = "",
+        var leftDelimeter: String = "",
+        var rightDelimeter: String = "",
+    )
 }
