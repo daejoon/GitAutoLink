@@ -16,7 +16,7 @@
         <p>Automatically link to specific words in Git log messages.</p>
     ]]></description>
     <change-notes><![CDATA[
-        <h3>0.0.1-SNAPSHOT</h3>
+        <h3>0.0.5</h3>
     ]]></change-notes>
 
     <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->

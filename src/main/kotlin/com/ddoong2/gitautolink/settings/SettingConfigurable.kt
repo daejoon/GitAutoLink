@@ -24,12 +24,12 @@ class SettingConfigurable : BoundConfigurable("GitAutoLink") {
                     .bindText(model::urlTemplate)
 
             }
-            row("Left Delimeter:") {
+            row("Left Key Delimeter:") {
                 textField()
                     .columns(COLUMNS_TINY)
                     .bindText(model::leftDelimeter)
             }
-            row("Right Delimeter:") {
+            row("Right Key Delimeter:") {
                 textField()
                     .columns(COLUMNS_TINY)
                     .bindText(model::rightDelimeter)
