@@ -7,7 +7,7 @@ import com.intellij.ui.dsl.builder.*
 
 class SettingConfigurable : BoundConfigurable("GitAutoLink") {
 
-    private lateinit var panel : DialogPanel
+    private lateinit var panel: DialogPanel
     private val displayName = "GitAutoLink"
     private var model = Model()
 
@@ -40,7 +40,7 @@ class SettingConfigurable : BoundConfigurable("GitAutoLink") {
     }
 
     override fun isModified(): Boolean {
-        return panel.isModified();
+        return panel.isModified()
     }
 
     override fun apply() {
