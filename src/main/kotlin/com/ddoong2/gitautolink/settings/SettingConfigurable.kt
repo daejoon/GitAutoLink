@@ -27,12 +27,12 @@ class SettingConfigurable : BoundConfigurable("GitAutoLink") {
             row("Left Key Delimeter:") {
                 textField()
                     .columns(COLUMNS_TINY)
-                    .bindText(model::leftDelimeter)
+                    .bindText(model::leftDelimiter)
             }
             row("Right Key Delimeter:") {
                 textField()
                     .columns(COLUMNS_TINY)
-                    .bindText(model::rightDelimeter)
+                    .bindText(model::rightDelimiter)
             }
         }
 
@@ -47,19 +47,19 @@ class SettingConfigurable : BoundConfigurable("GitAutoLink") {
         if (isModified) {
             validate()
             panel.apply()
-            Setting.apply {
+            SettingStatus.apply {
                 urlTemplate = model.urlTemplate
-                leftDelimeter = model.leftDelimeter
-                rightDelimeter = model.rightDelimeter
+                leftDelimiter = model.leftDelimiter
+                rightDelimiter = model.rightDelimiter
             }
         }
     }
 
     override fun reset() {
         model.apply {
-            urlTemplate = Setting.urlTemplate
-            leftDelimeter = Setting.leftDelimeter
-            rightDelimeter = Setting.rightDelimeter
+            urlTemplate = SettingStatus.urlTemplate
+            leftDelimiter = SettingStatus.leftDelimiter
+            rightDelimiter = SettingStatus.rightDelimiter
         }
         panel.reset()
     }
@@ -72,8 +72,8 @@ class SettingConfigurable : BoundConfigurable("GitAutoLink") {
     }
 
     internal data class Model(
-        var urlTemplate: String = "",
-        var leftDelimeter: String = "",
-        var rightDelimeter: String = "",
+            var urlTemplate: String = "",
+            var leftDelimiter: String = "",
+            var rightDelimiter: String = "",
     )
 }

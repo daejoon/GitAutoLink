@@ -1,12 +1,12 @@
 package com.ddoong2.gitautolink.data
 
 class KeyData(
-    private val message: String,
-    left: String,
-    right: String,
+        private val message: String,
+        leftDelimiter: String,
+        rightDelimiter: String,
 ) {
-    private val leftIndex: Int = if ( left.isEmpty() ) -1 else message.indexOf(left)
-    private val rightIndex: Int = if ( right.isEmpty()) -1 else message.indexOf(right, leftIndex + 1)
+    private val leftIndex: Int = if ( leftDelimiter.isEmpty() ) -1 else message.indexOf(leftDelimiter)
+    private val rightIndex: Int = if ( rightDelimiter.isEmpty()) -1 else message.indexOf(rightDelimiter, leftIndex + 1)
 
     companion object {
         const val KEY = "{key}"
