@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+## 0.1.0
+- Correction of typos
+
 ## 0.0.9
 - Check compatibility
 
