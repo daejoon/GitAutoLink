@@ -22,6 +22,19 @@ class BrowserAction : DumbAwareAction() {
         }
     }
 
+    override fun update(e: AnActionEvent) {
+        super.update(e)
+
+        val vcsLog = e.getData(VcsLogDataKeys.VCS_LOG) ?: return
+        val keyData = KeyData(
+                message = vcsLog.selectedDetails[0].fullMessage,
+                leftDelimiter = SettingStatus.leftDelimiter,
+                rightDelimiter = SettingStatus.rightDelimiter,
+        )
+
+        e.presentation.isEnabled = keyData.isFind
+    }
+
     private fun openBrowse(urlTemplate: String, keyData: KeyData) {
         BrowserUtil.browse(urlTemplate.replace(KeyData.KEY, keyData.getValue()))
     }
