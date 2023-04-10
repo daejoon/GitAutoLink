@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+## 0.0.8
+- performance improvements 
+
 ## 0.0.7
 - Activate when a link is found in the text
 

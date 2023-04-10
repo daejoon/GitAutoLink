@@ -15,24 +15,23 @@ class SettingConfigurable : BoundConfigurable("GitAutoLink") {
         panel = panel {
             row("URL Template:") {
                 textField()
-                    .columns(COLUMNS_LARGE + 10)
-                    .comment(
-                        "Perform a search on a website and copy the resulting URL.\n" +
-                                "Replace your search term with {key} in curly brackets\n" +
-                                "e.g. https://en.dict.naver.com/#/search?query={key}"
-                    )
-                    .bindText(model::urlTemplate)
-
+                        .columns(COLUMNS_LARGE + 10)
+                        .comment(
+                                "Perform a search on a website and copy the resulting URL.\n" +
+                                        "Replace your search term with {key} in curly brackets\n" +
+                                        "e.g. https://en.dict.naver.com/#/search?query={key}"
+                        )
+                        .bindText(model::urlTemplate)
             }
             row("Left Key Delimeter:") {
                 textField()
-                    .columns(COLUMNS_TINY)
-                    .bindText(model::leftDelimiter)
+                        .columns(COLUMNS_TINY)
+                        .bindText(model::leftDelimiter)
             }
             row("Right Key Delimeter:") {
                 textField()
-                    .columns(COLUMNS_TINY)
-                    .bindText(model::rightDelimiter)
+                        .columns(COLUMNS_TINY)
+                        .bindText(model::rightDelimiter)
             }
         }
 
@@ -51,12 +50,14 @@ class SettingConfigurable : BoundConfigurable("GitAutoLink") {
                 urlTemplate = model.urlTemplate
                 leftDelimiter = model.leftDelimiter
                 rightDelimiter = model.rightDelimiter
+                save()
             }
         }
     }
 
     override fun reset() {
         model.apply {
+            SettingStatus.load()
             urlTemplate = SettingStatus.urlTemplate
             leftDelimiter = SettingStatus.leftDelimiter
             rightDelimiter = SettingStatus.rightDelimiter
@@ -76,4 +77,5 @@ class SettingConfigurable : BoundConfigurable("GitAutoLink") {
             var leftDelimiter: String = "",
             var rightDelimiter: String = "",
     )
+
 }

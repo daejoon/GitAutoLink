@@ -9,10 +9,10 @@ import com.intellij.vcs.log.VcsLogDataKeys
 
 class BrowserAction : DumbAwareAction() {
     override fun actionPerformed(e: AnActionEvent) {
-        val vcsLog = e.getData(VcsLogDataKeys.VCS_LOG) ?: return
+        val vcsLog = e.getData(VcsLogDataKeys.VCS_LOG_COMMIT_SELECTION) ?: return
 
         val keyData = KeyData(
-            message = vcsLog.selectedDetails[0].fullMessage,
+            message = vcsLog.cachedFullDetails[0].fullMessage,
             leftDelimiter = SettingStatus.leftDelimiter,
             rightDelimiter = SettingStatus.rightDelimiter,
         )
@@ -23,11 +23,9 @@ class BrowserAction : DumbAwareAction() {
     }
 
     override fun update(e: AnActionEvent) {
-        super.update(e)
-
-        val vcsLog = e.getData(VcsLogDataKeys.VCS_LOG) ?: return
+        val vcsLog = e.getData(VcsLogDataKeys.VCS_LOG_COMMIT_SELECTION) ?: return
         val keyData = KeyData(
-                message = vcsLog.selectedDetails[0].fullMessage,
+                message = vcsLog.cachedFullDetails[0].fullMessage,
                 leftDelimiter = SettingStatus.leftDelimiter,
                 rightDelimiter = SettingStatus.rightDelimiter,
         )
