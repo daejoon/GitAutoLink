@@ -5,7 +5,7 @@ import com.intellij.openapi.ui.DialogPanel
 import com.intellij.ui.dsl.builder.*
 
 
-class SettingConfigurable : BoundConfigurable("GitAutoLink") {
+class PluginSettingConfigurable : BoundConfigurable("GitAutoLink") {
 
     private lateinit var panel: DialogPanel
     private val displayName = "GitAutoLink"
@@ -46,22 +46,14 @@ class SettingConfigurable : BoundConfigurable("GitAutoLink") {
         if (isModified) {
             validate()
             panel.apply()
-            SettingStatus.apply {
-                urlTemplate = model.urlTemplate
-                leftDelimiter = model.leftDelimiter
-                rightDelimiter = model.rightDelimiter
-                save()
-            }
+            PluginSettingService
+                    .getInstance()
+                    .loadState(model.toPluginState())
         }
     }
 
     override fun reset() {
-        model.apply {
-            SettingStatus.load()
-            urlTemplate = SettingStatus.urlTemplate
-            leftDelimiter = SettingStatus.leftDelimiter
-            rightDelimiter = SettingStatus.rightDelimiter
-        }
+        model.updateFromPluginState(PluginSettingService.getInstance().state ?: PluginState.EMPTY)
         panel.reset()
     }
 
@@ -76,6 +68,19 @@ class SettingConfigurable : BoundConfigurable("GitAutoLink") {
             var urlTemplate: String = "",
             var leftDelimiter: String = "",
             var rightDelimiter: String = "",
-    )
+    ) {
+        fun toPluginState(): PluginState {
+            return PluginState(
+                    urlTemplate = urlTemplate,
+                    leftDelimiter = leftDelimiter,
+                    rightDelimiter = rightDelimiter,
+            )
+        }
 
+        fun updateFromPluginState(state: PluginState) {
+            urlTemplate = state.urlTemplate
+            leftDelimiter = state.leftDelimiter
+            rightDelimiter = state.rightDelimiter
+        }
+    }
 }

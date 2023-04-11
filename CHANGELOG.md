@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+## 0.1.1
+- Added plugin icon
+
 ## 0.1.0
 - Correction of typos
 

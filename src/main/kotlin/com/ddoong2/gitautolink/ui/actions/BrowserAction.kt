@@ -1,33 +1,36 @@
 package com.ddoong2.gitautolink.ui.actions
 
 import com.ddoong2.gitautolink.data.KeyData
-import com.ddoong2.gitautolink.settings.SettingStatus
+import com.ddoong2.gitautolink.settings.PluginSettingService
+import com.ddoong2.gitautolink.settings.PluginState
 import com.intellij.ide.BrowserUtil
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.project.DumbAwareAction
+import com.intellij.vcs.log.VcsLogCommitSelection
 import com.intellij.vcs.log.VcsLogDataKeys
 
 class BrowserAction : DumbAwareAction() {
     override fun actionPerformed(e: AnActionEvent) {
-        val vcsLog = e.getData(VcsLogDataKeys.VCS_LOG_COMMIT_SELECTION) ?: return
-
+        val pluginState = getPluginState() ?: return
+        val vcsLog = getVcsLogCommitSelection(e) ?: return
         val keyData = KeyData(
-            message = vcsLog.cachedFullDetails[0].fullMessage,
-            leftDelimiter = SettingStatus.leftDelimiter,
-            rightDelimiter = SettingStatus.rightDelimiter,
+                message = vcsLog.cachedFullDetails[0].fullMessage,
+                leftDelimiter = pluginState.leftDelimiter,
+                rightDelimiter = pluginState.rightDelimiter,
         )
 
         if (keyData.isFind) {
-            openBrowse(SettingStatus.urlTemplate, keyData)
+            openBrowse(pluginState.urlTemplate, keyData)
         }
     }
 
     override fun update(e: AnActionEvent) {
-        val vcsLog = e.getData(VcsLogDataKeys.VCS_LOG_COMMIT_SELECTION) ?: return
+        val pluginState = getPluginState() ?: return
+        val vcsLog = getVcsLogCommitSelection(e) ?: return
         val keyData = KeyData(
                 message = vcsLog.cachedFullDetails[0].fullMessage,
-                leftDelimiter = SettingStatus.leftDelimiter,
-                rightDelimiter = SettingStatus.rightDelimiter,
+                leftDelimiter = pluginState.leftDelimiter,
+                rightDelimiter = pluginState.rightDelimiter,
         )
 
         e.presentation.isEnabled = keyData.isFind
@@ -36,4 +39,10 @@ class BrowserAction : DumbAwareAction() {
     private fun openBrowse(urlTemplate: String, keyData: KeyData) {
         BrowserUtil.browse(urlTemplate.replace(KeyData.KEY, keyData.getValue()))
     }
+
+    private fun getPluginState(): PluginState? =
+            PluginSettingService.getInstance().state
+
+    private fun getVcsLogCommitSelection(e: AnActionEvent): VcsLogCommitSelection? =
+            e.getData(VcsLogDataKeys.VCS_LOG_COMMIT_SELECTION)
 }
