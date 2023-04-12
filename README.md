@@ -6,6 +6,10 @@
 
 <!-- Plugin description end -->
 
+## JetBrains Marketplace
+
+- [GitAutoLink](https://plugins.jetbrains.com/plugin/21448-gitautolink)
+
 ## Installation
 
 - Using IDE built-in plugin system:

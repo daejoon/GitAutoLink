@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+## 0.1.2
+- Support versions from 2022.3 onwards
+
 ## 0.1.1
 - Added plugin icon
 
@@ -12,7 +15,7 @@
 - Check compatibility
 
 ## 0.0.8
-- Performance improvements 
+- Performance improvements
 
 ## 0.0.7
 - Activate when a link is found in the text
