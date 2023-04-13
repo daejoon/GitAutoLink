@@ -8,40 +8,46 @@ class KeyDataTest {
 
     @Test
     fun `isFind`() {
-        val keyData = KeyData("[test]", "[", "]")
 
-        assertThat(keyData.isFind).isTrue()
+        assertFindIsTrue(KeyData("[test]", "[", "]"))
+        assertFindIsTrue(KeyData("(#test)", "(#", ")"))
+        assertFindIsTrue(KeyData("(test#)", "(", "#)"))
     }
 
     @Test
-    fun `isFind - left is empty`() {
-        val keyData = KeyData("test", "", "]")
-        assertThat(keyData.isFind).isFalse()
-    }
+    fun `isFind - is empty`() {
 
-    @Test
-    fun `isFind - right is empty`() {
-        val keyData = KeyData("test", "[", "")
-        assertThat(keyData.isFind).isFalse()
+        assertFindIsFalse(KeyData("test", "", "]"))
+        assertFindIsFalse(KeyData("test", "[", ""))
     }
 
     @Test
     fun `getValue`() {
-        val keyData = KeyData("[test]", "[", "]")
-        assertEquals("test", keyData.getValue())
+        assertEqualValue("test", KeyData("[test]", "[", "]"))
+        assertEqualValue("test", KeyData("(#test) 추가 내용 입니다.", "(#", ")"))
+        assertEqualValue("test", KeyData("(test#) 추가 내용 입니다.", "(", "#)"))
+        assertEqualValue("test", KeyData("시작 메세지 (test#) 추가 내용 입니다.", "(", "#)"))
     }
 
     @Test
-    fun `getValue - left is empty`() {
-        val keyData = KeyData("test", "", "]")
-        assertThrows(NoSuchElementException::class.java) {
-            keyData.getValue()
-        }
+    fun `getValue - is empty`() {
+        assertEmptyThrownNoSuchElementException(KeyData("test", "", "]"))
+        assertEmptyThrownNoSuchElementException(KeyData("test", "[", ""))
     }
 
-    @Test
-    fun `getValue - right is empty`() {
-        val keyData = KeyData("test", "[", "")
+    private fun assertFindIsTrue(keyData: KeyData) {
+        assertThat(keyData.isFind).isTrue()
+    }
+
+    private fun assertFindIsFalse(keyData: KeyData) {
+        assertThat(keyData.isFind).isFalse()
+    }
+
+    private fun assertEqualValue(expected: String, keyData: KeyData) {
+        assertEquals(expected, keyData.getValue())
+    }
+
+    private fun assertEmptyThrownNoSuchElementException(keyData: KeyData) {
         assertThrows(NoSuchElementException::class.java) {
             keyData.getValue()
         }

@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+## 0.1.3
+- Bugfix: Resolved an issue where a multi-character left delimiter was not being recognized.
+
 ## 0.1.2
 - Support versions from 2022.3 onwards
 

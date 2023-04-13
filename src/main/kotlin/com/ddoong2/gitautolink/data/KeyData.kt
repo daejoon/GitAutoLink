@@ -2,8 +2,8 @@ package com.ddoong2.gitautolink.data
 
 class KeyData(
         private val message: String,
-        leftDelimiter: String,
-        rightDelimiter: String,
+        private val leftDelimiter: String,
+        private val rightDelimiter: String,
 ) {
     private val leftIndex: Int = if ( leftDelimiter.isEmpty() ) -1 else message.indexOf(leftDelimiter)
     private val rightIndex: Int = if ( rightDelimiter.isEmpty()) -1 else message.indexOf(rightDelimiter, leftIndex + 1)
@@ -19,6 +19,6 @@ class KeyData(
         if (isFind.not()) {
             throw NoSuchElementException("Can't find key in message")
         }
-        return message.substring(leftIndex + 1, rightIndex)
+        return message.substring(leftIndex + leftDelimiter.length, rightIndex)
     }
 }
