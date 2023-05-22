@@ -6,12 +6,14 @@ import com.ddoong2.gitautolink.settings.PluginState
 import com.intellij.ide.BrowserUtil
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.project.DumbAwareAction
+import com.intellij.openapi.project.Project
 import com.intellij.vcs.log.VcsLogCommitSelection
 import com.intellij.vcs.log.VcsLogDataKeys
 
 class BrowserAction : DumbAwareAction() {
     override fun actionPerformed(e: AnActionEvent) {
-        val pluginState = getPluginState() ?: return
+        val project = e.project ?: return
+        val pluginState = getPluginState(project) ?: return
         val vcsLog = getVcsLogCommitSelection(e) ?: return
         val keyData = KeyData(
                 message = vcsLog.cachedFullDetails[0].fullMessage,
@@ -25,7 +27,8 @@ class BrowserAction : DumbAwareAction() {
     }
 
     override fun update(e: AnActionEvent) {
-        val pluginState = getPluginState() ?: return
+        val project = e.project ?: return
+        val pluginState = getPluginState(project) ?: return
         val vcsLog = getVcsLogCommitSelection(e) ?: return
         val keyData = KeyData(
                 message = vcsLog.cachedFullDetails[0].fullMessage,
@@ -40,8 +43,8 @@ class BrowserAction : DumbAwareAction() {
         BrowserUtil.browse(urlTemplate.replace(KeyData.KEY, keyData.getValue()))
     }
 
-    private fun getPluginState(): PluginState? =
-            PluginSettingService.getInstance().state
+    private fun getPluginState(project: Project): PluginState? =
+            PluginSettingService.getInstance(project).state
 
     private fun getVcsLogCommitSelection(e: AnActionEvent): VcsLogCommitSelection? =
             e.getData(VcsLogDataKeys.VCS_LOG_COMMIT_SELECTION)

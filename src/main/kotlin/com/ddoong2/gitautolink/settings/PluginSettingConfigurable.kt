@@ -1,11 +1,14 @@
 package com.ddoong2.gitautolink.settings
 
 import com.intellij.openapi.options.BoundConfigurable
+import com.intellij.openapi.project.Project
 import com.intellij.openapi.ui.DialogPanel
 import com.intellij.ui.dsl.builder.*
 
 
-class PluginSettingConfigurable : BoundConfigurable("GitAutoLink") {
+class PluginSettingConfigurable(
+        private val project : Project
+) : BoundConfigurable("GitAutoLink") {
 
     private lateinit var panel: DialogPanel
     private val displayName = "GitAutoLink"
@@ -47,13 +50,14 @@ class PluginSettingConfigurable : BoundConfigurable("GitAutoLink") {
             validate()
             panel.apply()
             PluginSettingService
-                    .getInstance()
+                    .getInstance(project)
                     .loadState(model.toPluginState())
         }
     }
 
     override fun reset() {
-        model.updateFromPluginState(PluginSettingService.getInstance().state ?: PluginState.EMPTY)
+        val state = PluginSettingService.getInstance(project).state ?: PluginState.EMPTY
+        model.updateFromPluginState(state)
         panel.reset()
     }
 

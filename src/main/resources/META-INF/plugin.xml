@@ -17,9 +17,9 @@
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
     <extensions defaultExtensionNs="com.intellij">
         <!-- Add your extensions here -->
-        <applicationConfigurable groupId="tools"
-                                 instance="com.ddoong2.gitautolink.settings.PluginSettingConfigurable"/>
-        <applicationService serviceImplementation="com.ddoong2.gitautolink.settings.PluginSettingService"/>
+        <projectConfigurable groupId="tools"
+                             instance="com.ddoong2.gitautolink.settings.PluginSettingConfigurable" />
+        <projectService serviceImplementation="com.ddoong2.gitautolink.settings.PluginSettingService" />
     </extensions>
 
 

@@ -1,8 +1,8 @@
 package com.ddoong2.gitautolink.settings
 
-import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.components.PersistentStateComponent
 import com.intellij.openapi.components.State
+import com.intellij.openapi.project.Project
 
 @State(
         name = "com.ddoong2.gitautolink.settings.PluginState",
@@ -22,8 +22,8 @@ class PluginSettingService : PersistentStateComponent<PluginState> {
 
     companion object {
         @JvmStatic
-        fun getInstance(): PersistentStateComponent<PluginState> {
-            return ApplicationManager.getApplication().getService(PluginSettingService::class.java)
+        fun getInstance(project: Project): PersistentStateComponent<PluginState> {
+            return project.getService(PluginSettingService::class.java)
         }
     }
 }

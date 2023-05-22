@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+## 0.2.0
+- Changed setting from Application to Project.
+
 ## 0.1.3
 - Bugfix: Resolved an issue where a multi-character left delimiter was not being recognized.
 
