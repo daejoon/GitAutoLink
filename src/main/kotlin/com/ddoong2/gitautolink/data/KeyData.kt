@@ -6,7 +6,11 @@ class KeyData(
         private val rightDelimiter: String,
 ) {
     private val leftIndex: Int = if ( leftDelimiter.isEmpty() ) -1 else message.indexOf(leftDelimiter)
-    private val rightIndex: Int = if ( rightDelimiter.isEmpty()) -1 else message.indexOf(rightDelimiter, leftIndex + 1)
+    private val rightIndex: Int = if ( rightDelimiter.isEmpty()) {
+        message.indexOf(" ", leftIndex + 1)
+    } else {
+        message.indexOf(rightDelimiter, leftIndex + 1)
+    }
 
     companion object {
         const val KEY = "{key}"

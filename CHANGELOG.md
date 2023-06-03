@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+## 0.3.0
+- If right delimiter value is empty, search for ' '
+
 ## 0.2.0
 - Changed setting from Application to Project.
 

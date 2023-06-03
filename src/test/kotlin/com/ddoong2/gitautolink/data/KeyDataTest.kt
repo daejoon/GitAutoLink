@@ -12,6 +12,7 @@ class KeyDataTest {
         assertFindIsTrue(KeyData("[test]", "[", "]"))
         assertFindIsTrue(KeyData("(#test)", "(#", ")"))
         assertFindIsTrue(KeyData("(test#)", "(", "#)"))
+        assertFindIsTrue(KeyData("#test ", "#", ""))
     }
 
     @Test

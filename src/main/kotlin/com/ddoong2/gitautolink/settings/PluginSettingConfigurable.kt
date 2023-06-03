@@ -35,6 +35,7 @@ class PluginSettingConfigurable(
                 textField()
                         .columns(COLUMNS_TINY)
                         .bindText(model::rightDelimiter)
+                comment("""If value is empty, search for ' '""")
             }
         }
 
