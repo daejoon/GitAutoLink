@@ -5,8 +5,8 @@ import com.intellij.openapi.components.State
 import com.intellij.openapi.project.Project
 
 @State(
-        name = "com.ddoong2.gitautolink.settings.PluginState",
-        storages = [com.intellij.openapi.components.Storage("GitAutoLink.xml")]
+    name = "com.ddoong2.gitautolink.settings.PluginState",
+    storages = [com.intellij.openapi.components.Storage("GitAutoLink.xml")]
 )
 class PluginSettingService : PersistentStateComponent<PluginState> {
 

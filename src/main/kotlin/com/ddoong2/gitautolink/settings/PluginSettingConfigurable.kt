@@ -7,7 +7,7 @@ import com.intellij.ui.dsl.builder.*
 
 
 class PluginSettingConfigurable(
-        private val project : Project
+    private val project: Project
 ) : BoundConfigurable("GitAutoLink") {
 
     private lateinit var panel: DialogPanel
@@ -18,23 +18,23 @@ class PluginSettingConfigurable(
         panel = panel {
             row("URL Template:") {
                 textField()
-                        .columns(COLUMNS_LARGE + 10)
-                        .comment(
-                                "Perform a search on a website and copy the resulting URL.\n" +
-                                        "Replace your search term with {key} in curly brackets\n" +
-                                        "e.g. https://en.dict.naver.com/#/search?query={key}"
-                        )
-                        .bindText(model::urlTemplate)
+                    .columns(COLUMNS_LARGE + 10)
+                    .comment(
+                        "Perform a search on a website and copy the resulting URL.\n" +
+                                "Replace your search term with {key} in curly brackets\n" +
+                                "e.g. https://en.dict.naver.com/#/search?query={key}"
+                    )
+                    .bindText(model::urlTemplate)
             }
             row("Left Key Delimiter:") {
                 textField()
-                        .columns(COLUMNS_TINY)
-                        .bindText(model::leftDelimiter)
+                    .columns(COLUMNS_TINY)
+                    .bindText(model::leftDelimiter)
             }
             row("Right Key Delimiter:") {
                 textField()
-                        .columns(COLUMNS_TINY)
-                        .bindText(model::rightDelimiter)
+                    .columns(COLUMNS_TINY)
+                    .bindText(model::rightDelimiter)
                 comment("""If value is empty, search for ' '""")
             }
         }
@@ -51,8 +51,8 @@ class PluginSettingConfigurable(
             validate()
             panel.apply()
             PluginSettingService
-                    .getInstance(project)
-                    .loadState(model.toPluginState())
+                .getInstance(project)
+                .loadState(model.toPluginState())
         }
     }
 
@@ -70,15 +70,15 @@ class PluginSettingConfigurable(
     }
 
     internal data class Model(
-            var urlTemplate: String = "",
-            var leftDelimiter: String = "",
-            var rightDelimiter: String = "",
+        var urlTemplate: String = "",
+        var leftDelimiter: String = "",
+        var rightDelimiter: String = "",
     ) {
         fun toPluginState(): PluginState {
             return PluginState(
-                    urlTemplate = urlTemplate,
-                    leftDelimiter = leftDelimiter,
-                    rightDelimiter = rightDelimiter,
+                urlTemplate = urlTemplate,
+                leftDelimiter = leftDelimiter,
+                rightDelimiter = rightDelimiter,
             )
         }
 

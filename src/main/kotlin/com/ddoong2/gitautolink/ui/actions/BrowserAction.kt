@@ -16,9 +16,9 @@ class BrowserAction : DumbAwareAction() {
         val pluginState = getPluginState(project) ?: return
         val vcsLog = getVcsLogCommitSelection(e) ?: return
         val keyData = KeyData(
-                message = vcsLog.cachedFullDetails[0].fullMessage,
-                leftDelimiter = pluginState.leftDelimiter,
-                rightDelimiter = pluginState.rightDelimiter,
+            message = vcsLog.cachedFullDetails[0].fullMessage,
+            leftDelimiter = pluginState.leftDelimiter,
+            rightDelimiter = pluginState.rightDelimiter,
         )
 
         if (keyData.isFind) {
@@ -31,9 +31,9 @@ class BrowserAction : DumbAwareAction() {
         val pluginState = getPluginState(project) ?: return
         val vcsLog = getVcsLogCommitSelection(e) ?: return
         val keyData = KeyData(
-                message = vcsLog.cachedFullDetails[0].fullMessage,
-                leftDelimiter = pluginState.leftDelimiter,
-                rightDelimiter = pluginState.rightDelimiter,
+            message = vcsLog.cachedFullDetails[0].fullMessage,
+            leftDelimiter = pluginState.leftDelimiter,
+            rightDelimiter = pluginState.rightDelimiter,
         )
 
         e.presentation.isEnabled = keyData.isFind
@@ -44,8 +44,8 @@ class BrowserAction : DumbAwareAction() {
     }
 
     private fun getPluginState(project: Project): PluginState? =
-            PluginSettingService.getInstance(project).state
+        PluginSettingService.getInstance(project).state
 
     private fun getVcsLogCommitSelection(e: AnActionEvent): VcsLogCommitSelection? =
-            e.getData(VcsLogDataKeys.VCS_LOG_COMMIT_SELECTION)
+        e.getData(VcsLogDataKeys.VCS_LOG_COMMIT_SELECTION)
 }

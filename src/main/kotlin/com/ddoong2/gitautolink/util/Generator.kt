@@ -7,6 +7,7 @@ inline fun <reified T> idGenerator(key: String?): String {
         "${T::class.java.packageName}.${T::class.java.simpleName}.$key"
     }
 }
+
 inline fun <reified T> idGenerator(): String {
     return idGenerator<T>("")
 }
