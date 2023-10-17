@@ -37,6 +37,12 @@ class PluginSettingConfigurable(
                     .bindText(model::rightDelimiter)
                 comment("""If value is empty, search for ' '""")
             }
+            row("Key Pattern(RegEx):") {
+                textField()
+                    .columns(COLUMNS_MEDIUM)
+                    .bindText(model::keyPattern)
+                comment("""If value is empty, it is not used""")
+            }
         }
 
         return panel;
@@ -73,12 +79,14 @@ class PluginSettingConfigurable(
         var urlTemplate: String = "",
         var leftDelimiter: String = "",
         var rightDelimiter: String = "",
+        var keyPattern: String = "",
     ) {
         fun toPluginState(): PluginState {
             return PluginState(
                 urlTemplate = urlTemplate,
                 leftDelimiter = leftDelimiter,
                 rightDelimiter = rightDelimiter,
+                keyPattern = keyPattern,
             )
         }
 
@@ -86,6 +94,7 @@ class PluginSettingConfigurable(
             urlTemplate = state.urlTemplate
             leftDelimiter = state.leftDelimiter
             rightDelimiter = state.rightDelimiter
+            keyPattern = state.keyPattern
         }
     }
 }

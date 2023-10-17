@@ -19,6 +19,7 @@ class BrowserAction : DumbAwareAction() {
             message = vcsLog.cachedFullDetails[0].fullMessage,
             leftDelimiter = pluginState.leftDelimiter,
             rightDelimiter = pluginState.rightDelimiter,
+            keyPattern =  pluginState.keyPattern,
         )
 
         if (keyData.isFind) {
@@ -34,6 +35,7 @@ class BrowserAction : DumbAwareAction() {
             message = vcsLog.cachedFullDetails[0].fullMessage,
             leftDelimiter = pluginState.leftDelimiter,
             rightDelimiter = pluginState.rightDelimiter,
+            keyPattern =  pluginState.keyPattern,
         )
 
         e.presentation.isEnabled = keyData.isFind
