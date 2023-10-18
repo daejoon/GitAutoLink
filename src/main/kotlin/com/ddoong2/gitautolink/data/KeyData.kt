@@ -3,8 +3,8 @@ package com.ddoong2.gitautolink.data
 class KeyData(
     private val message: String,
     private val leftDelimiter: String,
-    private val rightDelimiter: String,
-    private val keyPattern: String,
+    private val rightDelimiter: String = "",
+    private val keyPattern: String = "",
 ) {
     private val leftIndex: Int = if (leftDelimiter.isEmpty()) -1 else message.indexOf(leftDelimiter)
     private val rightIndex: Int = if (rightDelimiter.isEmpty()) {
@@ -28,10 +28,10 @@ class KeyData(
         if (keyPattern.isEmpty()) {
             return keyValue;
         }
-        return getKeyValue(keyValue);
+        return getKeyValueByPattern(keyValue);
     }
 
-    private fun getKeyValue(keyValue: String): String {
+    private fun getKeyValueByPattern(keyValue: String): String {
         val find = this.keyPattern.toRegex().find(keyValue)
         val groupValues = find?.groupValues ?: listOf()
         if (groupValues.isEmpty()) {

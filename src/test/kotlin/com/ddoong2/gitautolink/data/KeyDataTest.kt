@@ -29,6 +29,7 @@ class KeyDataTest {
         assertEqualValue("test", KeyData("(#test) 추가 내용 입니다.", "(#", ")"))
         assertEqualValue("test", KeyData("(test#) 추가 내용 입니다.", "(", "#)"))
         assertEqualValue("test", KeyData("시작 메세지 (test#) 추가 내용 입니다.", "(", "#)"))
+        assertEqualValue("TEST-1234", KeyData("시작 메세지 (feature/TEST-1234) 추가 내용 입니다.", "(", ")", "\\w+-\\d+"))
     }
 
     @Test
