@@ -26,7 +26,7 @@ dependencies {
     testImplementation("org.junit.platform:junit-platform-launcher:1.9.2")
     testImplementation("org.junit.jupiter:junit-jupiter:5.9.2")
     testImplementation("org.assertj:assertj-core:3.24.2")
-    testImplementation("io.github.autoparams:autoparams:1.1.1")
+    testImplementation("io.github.autoparams:autoparams:3.1.0")
 }
 
 tasks.withType<Test> {
