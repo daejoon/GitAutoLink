@@ -6,16 +6,15 @@
 
 <!-- Plugin description end -->
 
-## JetBrains Marketplace
-
-- [GitAutoLink](https://plugins.jetbrains.com/plugin/21448-gitautolink)
-
 ## Installation
+
+<a href="https://plugins.jetbrains.com/plugin/21448-gitautolink" target="_blank">
+  <img src="https://yiiguxing.github.io/TranslationPlugin/img/ext/installation_button.svg" height="52" alt="Get from Marketplace" title="Get from Marketplace">
+</a>
 
 - Using IDE built-in plugin system:
 
-  `Settings/Preferences` > `Plugins` > `Marketplace` > `Search for "GitAutoLink"` >
-  `Install Plugin`
+  `Settings/Preferences` > `Plugins` > `Marketplace` > `Search for "GitAutoLink"` > `Install Plugin`
 
 ## License
 
