@@ -4,7 +4,7 @@ root = true
 charset = utf-8
 insert_final_newline = true
 
-[*.{groovy,java,kt,xml}]
+[*.{java,kt}]
 max_line_length = 100
 ij_visual_guides = 80
 indent_style = space
@@ -12,3 +12,16 @@ indent_size = 4
 tab_width = 4
 continuation_indent_size = 8
 trim_trailing_whitespace = true
+
+[*.java]
+ij_java_use_single_class_imports = true
+ij_java_class_count_to_use_import_on_demand = 999
+ij_java_names_count_to_use_import_on_demand = 999
+ij_java_else_on_new_line = true
+ij_java_align_multiline_parameters_in_calls = true
+ij_java_align_multiline_extends_list = true
+ij_java_keep_simple_lambdas_in_one_line = true
+ij_java_keep_simple_classes_in_one_line = true
+
+[*.kt]
+ij_kotlin_code_style_defaults = KOTLIN_OFFICIAL
