@@ -4,6 +4,7 @@ import com.ddoong2.gitautolink.data.KeyData
 import com.ddoong2.gitautolink.settings.PluginSettingService
 import com.ddoong2.gitautolink.settings.PluginState
 import com.intellij.ide.BrowserUtil
+import com.intellij.openapi.actionSystem.ActionUpdateThread
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.project.DumbAwareAction
 import com.intellij.openapi.project.Project
@@ -11,6 +12,10 @@ import com.intellij.vcs.log.VcsLogCommitSelection
 import com.intellij.vcs.log.VcsLogDataKeys
 
 class BrowserAction : DumbAwareAction() {
+    override fun getActionUpdateThread(): ActionUpdateThread {
+        return ActionUpdateThread.EDT
+    }
+
     override fun actionPerformed(e: AnActionEvent) {
         val project = e.project ?: return
         val pluginState = getPluginState(project) ?: return
