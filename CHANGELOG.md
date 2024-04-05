@@ -2,13 +2,18 @@
 
 ## Unreleased
 
+## 0.5.0
+
+- Support IntelliJ 2024.1
+- Add ActionUpdateThread to BrowserAction
+
 ## 0.4.0
 
 - Feature: Can do regular expressions on key values.
 
 ## 0.3.0
 
-- If right delimiter value is empty, search for ' '
+- If right delimiter value is empty, search for `' '`
 
 ## 0.2.0
 
