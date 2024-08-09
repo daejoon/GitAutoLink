@@ -1,6 +1,7 @@
 # GitAutoLink Changelog
 
 ## Unreleased
+- Support IntelliJ 2024.2
 
 ## 0.5.0
 
