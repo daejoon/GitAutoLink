@@ -1,6 +1,9 @@
 # GitAutoLink Changelog
 
 ## Unreleased
+
+## 0.7.0
+
 - Support IntelliJ 2024.
 - Upgrade platformVersion to 2024.3
 - Upgrade gradle to 8.10
@@ -8,6 +11,7 @@
 - Upgrade JDK 21
 
 ## 0.6.0
+
 - Support IntelliJ 2024.2
 
 ## 0.5.0
