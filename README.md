@@ -1,6 +1,6 @@
 <!-- Plugin description -->
 
-# GitAutoLink Plugin
+# <img src="docs/images/icon.png" alt="icon" width="24" height="24" /> GitAutoLink Plugin
 
 > This plugin is used to automatically generate links to the commit message of the project on Jira, GitHub, GitLab, etc.
 
@@ -19,3 +19,6 @@
 ## License
 
 This project is licensed under the MIT License.
+
+## Icon Creator
+- Creaticca Creative Agency - Flaticon
