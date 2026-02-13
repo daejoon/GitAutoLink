@@ -2,7 +2,10 @@
 
 # <img src="docs/images/icon.png" alt="icon" width="24" height="24" /> GitAutoLink Plugin
 
-> This plugin is used to automatically generate links to the commit message of the project on Jira, GitHub, GitLab, etc.
+[![Version](https://img.shields.io/jetbrains/plugin/v/21448-gitautolink.svg)](https://plugins.jetbrains.com/plugin/21448-gitautolink)
+[![Downloads](https://img.shields.io/jetbrains/plugin/d/21448-gitautolink.svg)](https://plugins.jetbrains.com/plugin/21448-gitautolink)
+
+This plugin is used to automatically generate links to the commit message of the project on Jira, GitHub, GitLab, etc.
 
 <!-- Plugin description end -->
 
