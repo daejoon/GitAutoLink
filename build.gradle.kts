@@ -36,6 +36,8 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter:5.9.2")
     testImplementation("org.assertj:assertj-core:3.24.2")
     testImplementation("io.github.autoparams:autoparams:3.1.0")
+    // IntelliJ Platform 테스트 리스너가 JUnit 4 클래스(junit.framework.TestCase)를 로드하므로 필요
+    testRuntimeOnly("junit:junit:4.13.2")
 
     // IntelliJ Platform Gradle Plugin Dependencies Extension - read more: https://plugins.jetbrains.com/docs/intellij/tools-intellij-platform-gradle-plugin-dependencies-extension.html
     intellijPlatform {
