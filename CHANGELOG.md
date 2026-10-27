@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## 0.7.1
+
+- Bugfix: Fixed `ArrayIndexOutOfBoundsException` in Open in Browser action when no commit is selected.
+
 ## 0.7.0
 
 - Support IntelliJ 2024.
