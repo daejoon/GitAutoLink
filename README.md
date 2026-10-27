@@ -1,6 +1,6 @@
 <!-- Plugin description -->
 
-# <img src="docs/images/icon.png" alt="icon" width="24" height="24" /> GitAutoLink Plugin
+# <img src="src/main/resources/META-INF/pluginIcon.svg" width="28" height="28" alt="GitAutoLink Icon"> GitAutoLink
 
 [![Version](https://img.shields.io/jetbrains/plugin/v/21448-gitautolink.svg)](https://plugins.jetbrains.com/plugin/21448-gitautolink)
 [![Downloads](https://img.shields.io/jetbrains/plugin/d/21448-gitautolink.svg)](https://plugins.jetbrains.com/plugin/21448-gitautolink)
