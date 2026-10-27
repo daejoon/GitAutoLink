@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+## 0.7.2
+
+- Support IntelliJ 2024.2 - 2026.2 (dropped support for 2023.1 - 2024.1)
+- Upgrade Gradle to 9.8.2
+- Upgrade IntelliJ Platform Gradle Plugin to 2.19.0
+- Fix test execution by adding JUnit 4 runtime dependency
+
 ## 0.7.1
 
 - Bugfix: Fixed `ArrayIndexOutOfBoundsException` in Open in Browser action when no commit is selected.
