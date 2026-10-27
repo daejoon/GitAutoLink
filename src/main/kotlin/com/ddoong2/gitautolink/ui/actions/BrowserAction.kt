@@ -20,8 +20,9 @@ class BrowserAction : DumbAwareAction() {
         val project = e.project ?: return
         val pluginState = getPluginState(project) ?: return
         val vcsLog = getVcsLogCommitSelection(e) ?: return
+        val commit = vcsLog.cachedFullDetails.firstOrNull() ?: return
         val keyData = KeyData(
-            message = vcsLog.cachedFullDetails[0].fullMessage,
+            message = commit.fullMessage,
             leftDelimiter = pluginState.leftDelimiter,
             rightDelimiter = pluginState.rightDelimiter,
             keyPattern =  pluginState.keyPattern,
@@ -33,11 +34,13 @@ class BrowserAction : DumbAwareAction() {
     }
 
     override fun update(e: AnActionEvent) {
+        e.presentation.isEnabled = false
         val project = e.project ?: return
         val pluginState = getPluginState(project) ?: return
         val vcsLog = getVcsLogCommitSelection(e) ?: return
+        val commit = vcsLog.cachedFullDetails.firstOrNull() ?: return
         val keyData = KeyData(
-            message = vcsLog.cachedFullDetails[0].fullMessage,
+            message = commit.fullMessage,
             leftDelimiter = pluginState.leftDelimiter,
             rightDelimiter = pluginState.rightDelimiter,
             keyPattern =  pluginState.keyPattern,
