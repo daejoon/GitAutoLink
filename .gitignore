@@ -44,3 +44,5 @@ bin/
 
 ### Local ###
 .envrc
+/specs/
+/reports/
