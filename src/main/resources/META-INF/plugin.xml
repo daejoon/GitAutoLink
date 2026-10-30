@@ -18,6 +18,7 @@
     <extensions defaultExtensionNs="com.intellij">
         <!-- Add your extensions here -->
         <projectConfigurable groupId="tools"
+                             displayName="GitAutoLink"
                              instance="com.ddoong2.gitautolink.settings.PluginSettingConfigurable"/>
         <projectService
                 serviceImplementation="com.ddoong2.gitautolink.settings.PluginSettingService"/>
