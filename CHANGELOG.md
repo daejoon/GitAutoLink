@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## 0.7.3
+
+- Bugfix: Fix the missing settings display name error during IntelliJ IDEA 2026.2.4 startup by declaring the display name in the plugin descriptor.
+
 ## 0.7.2
 
 - Support IntelliJ 2024.2 - 2026.2 (dropped support for 2023.1 - 2024.1)
