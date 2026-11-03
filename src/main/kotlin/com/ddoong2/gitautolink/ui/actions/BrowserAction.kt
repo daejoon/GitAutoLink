@@ -25,7 +25,7 @@ class BrowserAction : DumbAwareAction() {
             message = commit.fullMessage,
             leftDelimiter = pluginState.leftDelimiter,
             rightDelimiter = pluginState.rightDelimiter,
-            keyPattern =  pluginState.keyPattern,
+            keyPattern = pluginState.keyPattern,
         )
 
         if (keyData.isFind) {
@@ -43,7 +43,7 @@ class BrowserAction : DumbAwareAction() {
             message = commit.fullMessage,
             leftDelimiter = pluginState.leftDelimiter,
             rightDelimiter = pluginState.rightDelimiter,
-            keyPattern =  pluginState.keyPattern,
+            keyPattern = pluginState.keyPattern,
         )
 
         e.presentation.isEnabled = keyData.isFind
