@@ -46,7 +46,7 @@ class PluginSettingConfigurable(
                 textField()
                     .columns(COLUMNS_MEDIUM)
                     .bindText(model::keyPattern)
-                comment("""If value is empty, it is not used""")
+                comment("""If value is empty, it is not used. If Left Key Delimiter is empty, the whole commit message is searched (e.g. MRKT-\d+)""")
             }
         }
 
