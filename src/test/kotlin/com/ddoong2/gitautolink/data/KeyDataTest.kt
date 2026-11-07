@@ -33,6 +33,15 @@ class KeyDataTest {
     }
 
     @Test
+    fun `getValue - 구분자 없이 Key Pattern만 있으면 메시지 전체에서 찾는다`() {
+        val keyData = KeyData("Fix login bug MRKT-1234 for mobile", "", "", "MRKT-\\d+")
+
+        assertFindIsTrue(keyData)
+        assertEqualValue("MRKT-1234", keyData)
+        assertEqualValue("1234", KeyData("Fix login bug #1234", "", "", "\\d+"))
+    }
+
+    @Test
     fun `getValue - is empty`() {
         assertEmptyThrownNoSuchElementException(KeyData("test", "", "]"))
         assertEmptyThrownNoSuchElementException(KeyData("test", "[", ""))

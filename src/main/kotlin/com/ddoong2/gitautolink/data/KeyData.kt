@@ -17,18 +17,25 @@ class KeyData(
         const val KEY = "{key}"
     }
 
-    val isFind: Boolean
+    private val isDelimiterFind: Boolean
         get() = (leftIndex < rightIndex) && (leftIndex != -1) && (rightIndex != -1)
 
+    // 구분자 없이 Key Pattern만 설정한 경우 커밋 메시지 전체를 검색 대상으로 삼는다.
+    private val searchTarget: String? = when {
+        isDelimiterFind -> message.substring(leftIndex + leftDelimiter.length, rightIndex)
+        leftDelimiter.isEmpty() && keyPattern.isNotEmpty() -> message
+        else -> null
+    }
+
+    private val value: String? = searchTarget?.let { target ->
+        if (keyPattern.isEmpty()) target else getKeyValueByPattern(target)
+    }
+
+    val isFind: Boolean
+        get() = value != null
+
     fun getValue(): String {
-        if (isFind.not()) {
-            throw NoSuchElementException("Can't find key in message")
-        }
-        val keyValue = message.substring(leftIndex + leftDelimiter.length, rightIndex)
-        if (keyPattern.isEmpty()) {
-            return keyValue;
-        }
-        return getKeyValueByPattern(keyValue);
+        return value ?: throw NoSuchElementException("Can't find key in message")
     }
 
     private fun getKeyValueByPattern(keyValue: String): String {
