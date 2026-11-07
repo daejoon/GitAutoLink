@@ -50,6 +50,9 @@ dependencies {
         create(providers.gradleProperty("platformType"), providers.gradleProperty("platformVersion"))
         // Plugin Dependencies. Uses `platformBundledPlugins` property from the gradle.properties file for bundled IntelliJ Platform plugins.
         bundledPlugins(providers.gradleProperty("platformBundledPlugins").map { it.split(',') })
+        // 2025.3부터 VCS Log가 별도 모듈로 분리돼 컴파일 클래스패스에 명시적으로 추가해야 한다.
+        // graph 모듈은 VcsFullCommitDetails의 상위 타입(GraphCommit) 때문에 필요하다.
+        bundledModules("intellij.platform.vcs.log", "intellij.platform.vcs.log.graph")
 
         // Plugin Dependencies. Uses `platformPlugins` property from the gradle.properties file for plugin from JetBrains Marketplace.
         plugins(providers.gradleProperty("platformPlugins").map { it.split(',') })
