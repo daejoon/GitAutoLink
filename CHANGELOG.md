@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+## 0.8.1
+
+- Support IntelliJ 2025.3 - 2026.3 (dropped support for 2024.2 - 2025.2)
+- Bugfix: Fix VCS Log classes not resolving in IntelliJ IDEA 2026.3 by declaring a dependency on the `intellij.platform.vcs.log` module
+- Upgrade Kotlin to 2.4.21
+- Upgrade IntelliJ Platform Gradle Plugin to 2.20.0
+- Upgrade Gradle Changelog Plugin to 2.5.0
+
 ## 0.8.0
 
 - Support IntelliJ 2024.2 - 2026.3

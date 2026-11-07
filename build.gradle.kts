@@ -1,16 +1,18 @@
 import org.jetbrains.changelog.Changelog
 import org.jetbrains.changelog.markdownToHTML
+import org.jetbrains.intellij.platform.gradle.IntelliJPlatformType
 import org.jetbrains.intellij.platform.gradle.TestFrameworkType
+import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
 
 plugins {
     // Java support
     id("java")
     // Kotlin support
-    id("org.jetbrains.kotlin.jvm") version "2.0.21"
+    id("org.jetbrains.kotlin.jvm") version "2.4.21"
     // gradle-intellij-plugin - read more: https://github.com/JetBrains/gradle-intellij-plugin
-    id("org.jetbrains.intellij.platform") version "2.19.0"
+    id("org.jetbrains.intellij.platform") version "2.20.0"
     // gradle-changelog-plugin - read more: https://github.com/JetBrains/gradle-changelog-plugin
-    id("org.jetbrains.changelog") version "2.2.0"
+    id("org.jetbrains.changelog") version "2.5.0"
 }
 
 group = providers.gradleProperty("pluginGroup").get()
@@ -19,6 +21,10 @@ version = providers.gradleProperty("pluginVersion").get()
 // Set the JVM language level used to build the project.
 kotlin {
     jvmToolchain(21)
+    compilerOptions {
+        // 최소 지원 IDE(sinceBuild 253 = 2025.3)에 번들된 Kotlin stdlib 2.2.20에 맞춘다
+        apiVersion = KotlinVersion.KOTLIN_2_2
+    }
 }
 
 repositories {
@@ -108,6 +114,17 @@ intellijPlatform {
     pluginVerification {
         ides {
             recommended()
+        }
+    }
+}
+
+// 최신 IDE에서 플러그인 동작을 직접 확인하기 위한 실행 태스크 (./gradlew runIde263)
+// 2026.3부터 VCS Log가 별도 모듈로 분리되어 Plugin Verifier만으로는 판단이 어렵다
+intellijPlatformTesting {
+    runIde {
+        register("runIde263") {
+            type = IntelliJPlatformType.IntellijIdea
+            version = "2026.3"
         }
     }
 }

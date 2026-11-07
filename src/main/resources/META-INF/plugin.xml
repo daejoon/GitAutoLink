@@ -11,6 +11,12 @@
     <!-- Product and plugin compatibility requirements.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
     <depends>com.intellij.modules.platform</depends>
+    <!-- VCS Log API(VcsLogDataKeys 등). 2026.3부터 번들 플러그인 com.intellij.platform.vcs의
+         별도 콘텐츠 모듈(intellij.platform.vcs.log)로 분리됨. 이 모듈은 2025.3(253)부터 존재한다. -->
+    <depends>com.intellij.modules.vcs</depends>
+    <dependencies>
+        <module name="intellij.platform.vcs.log"/>
+    </dependencies>
 
 
     <!-- Extension points defined by the plugin.
