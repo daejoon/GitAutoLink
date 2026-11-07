@@ -1,5 +1,7 @@
 package com.ddoong2.gitautolink.data
 
+import java.util.regex.PatternSyntaxException
+
 class KeyData(
     private val message: String,
     private val leftDelimiter: String,
@@ -39,7 +41,13 @@ class KeyData(
     }
 
     // 매칭되지 않으면 null을 돌려줘, 빈 key로 URL이 열리지 않게 한다.
+    // 사용자가 입력한 정규식이 잘못돼도 액션 update()에서 예외가 나지 않도록 찾지 못함으로 처리한다.
     private fun getKeyValueByPattern(keyValue: String): String? {
-        return this.keyPattern.toRegex().find(keyValue)?.value
+        val regex = try {
+            this.keyPattern.toRegex()
+        } catch (e: PatternSyntaxException) {
+            return null
+        }
+        return regex.find(keyValue)?.value
     }
 }

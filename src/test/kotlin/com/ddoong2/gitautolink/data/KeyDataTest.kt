@@ -48,6 +48,11 @@ class KeyDataTest {
     }
 
     @Test
+    fun `isFind - 잘못된 Key Pattern이면 예외 없이 찾지 못한다`() {
+        assertFindIsFalse(KeyData("Fix login bug MRKT-1234", "", "", "MRKT-\\d+("))
+    }
+
+    @Test
     fun `getValue - is empty`() {
         assertEmptyThrownNoSuchElementException(KeyData("test", "", "]"))
         assertEmptyThrownNoSuchElementException(KeyData("test", "[", ""))
