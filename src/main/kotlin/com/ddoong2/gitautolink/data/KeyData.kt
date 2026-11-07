@@ -38,12 +38,8 @@ class KeyData(
         return value ?: throw NoSuchElementException("Can't find key in message")
     }
 
-    private fun getKeyValueByPattern(keyValue: String): String {
-        val find = this.keyPattern.toRegex().find(keyValue)
-        val groupValues = find?.groupValues ?: listOf()
-        if (groupValues.isEmpty()) {
-            return ""
-        }
-        return groupValues[0]
+    // 매칭되지 않으면 null을 돌려줘, 빈 key로 URL이 열리지 않게 한다.
+    private fun getKeyValueByPattern(keyValue: String): String? {
+        return this.keyPattern.toRegex().find(keyValue)?.value
     }
 }
