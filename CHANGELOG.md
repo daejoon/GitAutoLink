@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## 0.8.2
+
+- Bugfix: Key Pattern (RegEx) now works without delimiters. If Left Key Delimiter is empty, the whole commit message is searched (e.g. `MRKT-\d+`).
+- Bugfix: Disable Open in Browser when Key Pattern does not match, instead of opening a URL with an empty key.
+- Bugfix: Treat an invalid Key Pattern as not found instead of throwing an exception.
+
 ## 0.8.1
 
 - Support IntelliJ 2025.3 - 2026.3 (dropped support for 2024.2 - 2025.2)
